@@ -51,29 +51,19 @@ namespace Bitmap2Hex
             {
                 var xLength = array[y].Length;
 
-                stringBuilder.Append("{ ");
-
                 for (int x = 0; x < xLength; x++)
                 {
+                    stringBuilder.Append("0x");
                     stringBuilder.Append(array[y][x].ToString("X"));
 
-                    if (x < xLength - 1)
+                    if (x < xLength - 1 || y < yLength - 1)
                     {
                         stringBuilder.Append(", ");
-                        continue;
                     }
                 }
-
-                stringBuilder.Append(" }");
-
-                if (y < yLength - 1)
-                {
-                    stringBuilder.Append(", \n");
-                    continue;
-                }
-
-                stringBuilder.Append(" }");
             }
+            
+            stringBuilder.Append(" }");
 
             return stringBuilder.ToString();
         }
